@@ -1,18 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!--Import Google Icon Font-->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
     <!--Import materialize.css-->
-    <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="css/materialize.min.css"
+      media="screen,projection"
+    />
 
     <title>JohhnySoxStrings</title>
-</head>
-<body>
-    <h1>Hello world!</h1>
-    <p>this is testing the functionality of github pages</p>
-</body>
+  </head>
+  <body>
+    <nav class="nav-extended">
+      <div class="nav-wrapper">
+        <a href="#" class="brand-logo">Logo</a>
+        <a href="#" data-target="mobile-demo" class="sidenav-trigger"
+          ><i class="material-icons">menu</i></a
+        >
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+        </ul>
+      </div>
+      <div class="nav-content">
+        <ul class="tabs tabs-transparent">
+          <li class="tab"><a class="active" href="#about">About Me</a></li>
+          <li class="tab"><a ref="#project1">Test 2</a></li>
+          <li class="tab"><a href="#project2"> Tab</a></li>
+          <li class="tab"><a href="#project2">Test 4</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <ul class="sidenav" id="mobile-demo">
+    </ul>
+
+    <div id="about" class="col s12">Test 1</div>
+    <div id="project1" class="col s12">Test 2</div>
+    <div id="project2" class="col s12">Test 3</div>
+    <div id="project3" class="col s12">Test 4</div>
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+    <script>M.AutoInit();</script>
+  </body>
 </html>
