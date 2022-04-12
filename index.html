@@ -65,7 +65,7 @@
     <div id="tab1" class="col s12">
       <div class="container">
         <h4>About Me</h4>
-        <img class="circle responsive-img" />
+        <img class="circle responsive-img" href="/images/me.jpg" />
         <h5>John Barnett</h5>
       </div>
     </div>
@@ -99,10 +99,93 @@
         <p>Built a speed game with Angular, Dotnet, and SignalR.</p>
         <img class="responsive-img" />
         <p>
-          <code> </code>
+          For this project I spent most of my time in paired programming
+          sessions with group I worked with. I would guide them through the
+          logic and how to use different languages, libraries. Taking in the
+          consideration of the skill level of the team and their inexperience in
+          using angular. Aspects that could have been done better like players
+          choosing to join a game through a lobby and holding that in a database
+          rather than a singleton or a static class.
         </p>
+        <p>
+          This a service that allow for the user to register for the calls from
+          the server that section of the application cares about. It also has
+          methods for all the procedures that can be called on the server. I
+          would like to note the addHandler() and the disposeHandler() functions
+          that allow the component to register to the server calls that make
+          sense for the component.
+        </p>
+        <pre class="prettyprint" style="border: 0">
+          <code>
+import { Injectable } from '@angular/core';
+import {
+  HubConnection,
+  HubConnectionBuilder,
+  LogLevel,
+} from '@microsoft/signalr';
+import { CardInfo } from './speed-game/speed-game.component';
+@Injectable({
+  providedIn: 'root',
+})
+export class SignalrService {
+  private hubConnection: HubConnection = new HubConnectionBuilder()
+    .withUrl('/game')
+    .build();
+
+  constructor() {}
+  public startConnection() {
+    this.hubConnection
+      .start()
+      .then(() => console.log('connection started'))
+      .catch((err) => console.log(`Error connecting: ${err}`));
+  }
+
+  public addHandler(funcName: string, func: any) {
+    this.hubConnection.on(funcName, func);
+  }
+
+  public disposeHandlers(funcName: string) {
+    this.hubConnection.off(funcName);
+  }
+
+  public playCard(data: any) {
+    this.hubConnection
+      .send('PlayCard', data)
+      .catch((err) => console.log(`Error with play card: ${err}`));
+  }
+
+  public async reset(data: any) {
+    let result = await this.hubConnection.invoke('Reset', data);
+    .catch((err) => console.log(`Error with play card: ${err}`));
+  }
+
+  public newGame() {
+    this.hubConnection
+      .send('NewGame')
+      .catch((err) => console.log(`Error with test: ${err}`));
+  }
+
+  public playAgain(userName: string, willing: boolean) {
+    this.hubConnection
+      .send('PlayAgain', userName, willing)
+      .catch((err) => console.log(`Error with PlayAgain: ${err}`));
+  }
+
+  public newUser(userName: string) {
+    this.hubConnection
+      .send('NewUser', userName)
+      .catch((err) => console.log(`Error with NewUser: ${err}`));
+  }
+
+  public getConnectionId(): string {
+    return this.hubConnection.connectionId;
+  }
+} 
+          </code>
+        </pre>
       </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
     <script type="text/javascript" src="js/materialize.min.js"></script>
     <script>
       M.AutoInit();
