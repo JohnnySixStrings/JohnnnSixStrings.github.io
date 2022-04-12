@@ -254,6 +254,56 @@ export class SignalrService {
           spent cleaning up bugs in the code. The project had some cases where
           the developers were not using async and await properly.
         </p>
+        <pre>
+          <code class="prettyprint">
+    get
+    {
+        try
+        {
+            try
+            {
+                double amt = Amount;
+                foreach (ScholarshipAwardMoney awarded in AwardMonies)
+                    try
+                    {
+                        amt -= awarded.Amount;
+                    }
+                    catch (Exception)
+                    {
+                        continue;
+                    }
+                return amt;
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
+        }
+        catch (Exception)
+        {
+            return 0;
+        }
+
+    }
+          </code>
+        </pre>
+        <p>after my changes</p>
+        <pre>
+          <code class="prettyprint">
+get
+{
+    double amt = Amount;
+    if (AwardMonies is not null)
+    {
+        foreach (ScholarshipAwardMoney awarded in AwardMonies)
+        {
+            amt -= awarded.Amount;
+        }
+    }
+    return amt;
+}
+          </code>
+        </pre>
       </div>
     </div>
     <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
