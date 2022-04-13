@@ -93,7 +93,7 @@
           All rights belong to Bandai Namco for images and sounds. The project
           is only for demonstration and is not for sale.
         </p>
-        <img class="responsive-img" />
+        <img class="responsive-img" src="images/numbergame.gif" />
         <pre>
             <code class="prettyprint"> 
 StartGame = ReactiveCommand.Create(
@@ -125,7 +125,7 @@ StartGame = ReactiveCommand.Create(
           them up to speed with blazor. Which I had never worked with before.
           Though I work reguraly in C# and .Net Core.
         </p>
-        <img class="responsive-img" />
+        <img class="responsive-img" src="images/hangman.gif" />
         <pre>
           <code class="prettyprint"> 
 using Microsoft.EntityFrameworkCore;
@@ -156,7 +156,7 @@ public class HangmanDbContext : DbContext
       <div class="container">
         <h4>Speed</h4>
         <p>Built a speed game with Angular, Dotnet, and SignalR.</p>
-        <img class="responsive-img" />
+        <img class="responsive-img" src="images/speed.gif" />
         <p>
           For this project I spent most of my time in paired programming
           sessions with group I worked with. I would guide them through the
@@ -256,52 +256,52 @@ export class SignalrService {
         </p>
         <pre>
           <code class="prettyprint">
-    get
-    {
-        try
-        {
-            try
-            {
-                double amt = Amount;
-                foreach (ScholarshipAwardMoney awarded in AwardMonies)
-                    try
-                    {
-                        amt -= awarded.Amount;
-                    }
-                    catch (Exception)
-                    {
-                        continue;
-                    }
-                return amt;
-            }
-            catch (Exception)
-            {
-                return 0;
-            }
-        }
-        catch (Exception)
-        {
-            return 0;
-        }
+get
+  {
+      try
+      {
+          try
+          {
+              double amt = Amount;
+              foreach (ScholarshipAwardMoney awarded in AwardMonies)
+                  try
+                  {
+                      amt -= awarded.Amount;
+                  }
+                  catch (Exception)
+                  {
+                      continue;
+                  }
+              return amt;
+          }
+          catch (Exception)
+          {
+              return 0;
+          }
+      }
+      catch (Exception)
+      {
+          return 0;
+      }
 
-    }
+  }
           </code>
         </pre>
         <p>after my changes</p>
         <pre>
           <code class="prettyprint">
 get
-{
-    double amt = Amount;
-    if (AwardMonies is not null)
-    {
-        foreach (ScholarshipAwardMoney awarded in AwardMonies)
-        {
-            amt -= awarded.Amount;
-        }
-    }
-    return amt;
-}
+  {
+      double amt = Amount;
+      if (AwardMonies is not null)
+      {
+          foreach (ScholarshipAwardMoney awarded in AwardMonies)
+          {
+              amt -= awarded.Amount;
+          }
+      }
+      return amt;
+  }
           </code>
         </pre>
       </div>
